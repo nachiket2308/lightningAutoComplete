@@ -1,1 +1,3 @@
-<aura:application ></aura:application>
+<aura:application >
+	<c:ltngAutocomplete />
+</aura:application>

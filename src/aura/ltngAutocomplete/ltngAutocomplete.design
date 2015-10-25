@@ -1,0 +1,8 @@
+<design:component>
+    <!-- <design:attribute name="num" label="Number" description="Number to Show" /> -->
+
+	<design:attribute name="sObjectName" label="Search this object" default="Account"/>
+	<design:attribute name="useSOSL" label="Use SOSL to search" default="false"/>
+	<design:attribute name="minimumChar" label="Minimum charecters entered before search starts" default="3"/>
+	<design:attribute name="assignTo" label="Assign Selected record Id to this field" default=""/>
+</design:component>

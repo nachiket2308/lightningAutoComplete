@@ -1,1 +1,15 @@
-<aura:component ></aura:component>
+<aura:component implements="flexipage:availableForAllPageTypes" controller="AutocompleteLightningController">
+	<aura:attribute name="fetchFields" type="String[]" default="['Id', 'Name']"/>
+	<aura:attribute name="searchFields" type="String[]" default="['Name']"/>
+	<aura:attribute name="sObjectName" type="String" default="Account"/>
+	<aura:attribute name="useSOSL" type="Boolean" default="false"/>
+	<aura:attribute name="searchTerm" type="String" default=""/>
+	<aura:attribute name="minimumChar" type="Integer" default="3"/>
+	<aura:attribute name="assignTo" type="String" default=""/>
+
+	<ui:inputText value="{!v.searchTerm}" label="Enter search Term" 
+				  placeholder="{!'Enter search term (minimum char '+ v.minimumChar+') to search'}"
+				   updateOn="keyup" change="{!c.onSearchTermChange}"/>
+
+				{!v.searchTerm}
+</aura:component>
