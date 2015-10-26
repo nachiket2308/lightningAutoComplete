@@ -1,15 +1,40 @@
 <aura:component implements="flexipage:availableForAllPageTypes" controller="AutocompleteLightningController">
-	<aura:attribute name="fetchFields" type="String[]" default="['Id', 'Name']"/>
+	<ltng:require styles="/resource/slds/slds/styles/salesforce-lightning-design-system.css"/>
+	<aura:attribute name="fetchFields" type="String[]" default="['Name','BillingStreet','BillingCountry']"/>
 	<aura:attribute name="searchFields" type="String[]" default="['Name']"/>
 	<aura:attribute name="sObjectName" type="String" default="Account"/>
 	<aura:attribute name="useSOSL" type="Boolean" default="false"/>
 	<aura:attribute name="searchTerm" type="String" default=""/>
 	<aura:attribute name="minimumChar" type="Integer" default="3"/>
 	<aura:attribute name="assignTo" type="String" default=""/>
+   <div class="slds">
+      <div class="slds-lookup" data-select="multi" data-scope="single" data-typeahead="true">
+         <div class="slds-form-element">
+            <label class="slds-form-element__label" for="lookup">Enter search Term</label>
+            <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon--right">
+               <!--<svg aria-hidden="true" class="slds-input__icon">
+                  <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#search"></use>
+                  </svg> -->
+               <input id="lookup" class="slds-input" type="text" aria-autocomplete="list" role="combobox" aria-expanded="true" aria-activedescendant="" value="{!v.searchTerm}" updateOn="keyup" onkeyup="{!c.onSearchTermChange}" placeholder="{!'Enter search term (minimum char '+ v.minimumChar+') to search'}"/>
+            </div>
+         </div>
+         <div class="slds-lookup__menu" role="listbox">
+         	<aura:iteration items="{!v.records}" var="record">
+   	         <div class="slds-lookup__item">
+   	            <button class="slds-button">
+                     <div class="slds-grid slds-wrap highlightonhover">
+                        <aura:iteration items="{!record}" var="indvFieldValue">
+                           <div class="slds-col slds-size--1-of-1 slds-small-size--1-of-4 nowrap">{!indvFieldValue}</div>
+                        </aura:iteration>
+                     </div>
+                  </button>
 
-	<ui:inputText value="{!v.searchTerm}" label="Enter search Term" 
-				  placeholder="{!'Enter search term (minimum char '+ v.minimumChar+') to search'}"
-				   updateOn="keyup" change="{!c.onSearchTermChange}"/>
-
-				{!v.searchTerm}
+   	            <!-- <svg aria-hidden="true" class="slds-icon slds-icon-text-default slds-iconsmall"> 
+   	               <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#search"></use> 
+   	               </svg>&quot;ac&quot; in Accounts-->
+   	         </div>
+            </aura:iteration>
+         </div>
+       </div>
+   </div>
 </aura:component>

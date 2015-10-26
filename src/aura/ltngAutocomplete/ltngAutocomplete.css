@@ -1,2 +1,15 @@
-.THIS {
+.THIS .slds-button{
+	padding:1px;
+}
+
+.THIS .slds-grid{
+    background:#E6ECF3;
+    /*color: white;*/
+}
+.THIS .nowrap{
+	overflow: hidden;
+    white-space: nowrap;
+}
+.THIS .highlightonhover:hover{
+	background:#C3D7EF;
 }
