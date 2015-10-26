@@ -1,7 +1,9 @@
 ({
 	getDataFromServer : function(cmp, searchTerm) {
 		var action = cmp.get("c.getAutoCompleteData");
-		action.setParams({ });
+		action.setParams({
+            'searchString': searchTerm
+        });
         action.setCallback(this, function(response) {
             var state = response.getState();
             if (state === "SUCCESS") {

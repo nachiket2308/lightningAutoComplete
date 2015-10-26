@@ -7,15 +7,17 @@
 	<aura:attribute name="searchTerm" type="String" default=""/>
 	<aura:attribute name="minimumChar" type="Integer" default="3"/>
 	<aura:attribute name="assignTo" type="String" default=""/>
+   <aura:attribute name="currentText" type="String" default=""/>
+   <aura:attribute name="withSharing" type="Boolean" default=""/>
    <div class="slds">
       <div class="slds-lookup" data-select="multi" data-scope="single" data-typeahead="true">
          <div class="slds-form-element">
-            <label class="slds-form-element__label" for="lookup">Enter search Term</label>
+            <label class="slds-form-element__label" for="lookup">Enter search term</label>
             <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon--right">
                <!--<svg aria-hidden="true" class="slds-input__icon">
                   <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#search"></use>
                   </svg> -->
-               <input id="lookup" class="slds-input" type="text" aria-autocomplete="list" role="combobox" aria-expanded="true" aria-activedescendant="" value="{!v.searchTerm}" updateOn="keyup" onkeyup="{!c.onSearchTermChange}" placeholder="{!'Enter search term (minimum char '+ v.minimumChar+') to search'}"/>
+               <ui:inputText aura:id="lookup" class="slds-input" value="{!v.searchTerm}" updateOn="keyup" keyup="{!c.onSearchTermChange}" placeholder="{!'Enter search term (minimum char '+ v.minimumChar+') to search'}"/>
             </div>
          </div>
          <div class="slds-lookup__menu" role="listbox">
